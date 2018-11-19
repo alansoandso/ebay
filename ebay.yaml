@@ -1,0 +1,27 @@
+name: ebay_api_config
+
+# Trading API Sandbox - https://www.x.com/developers/ebay/products/trading-api
+api.sandbox.ebay.com:
+    compatability: 719
+    appid: AlanSo-PriceSpy-SBX-8c2330161-8f77c738
+    certid: SBX-c23301610d13-ee0a-46eb-83ed-33b0
+    devid: f91bac6c-e946-4b9a-940d-377675204635
+    token: ENTER_YOUR_TOKEN_HERE
+
+# Trading API - https://www.x.com/developers/ebay/products/trading-api
+api.ebay.com:
+    compatability: 719
+    appid: AlanSo-PriceSpy-PRD-ec230b90b-55dce9db
+    certid: PRD-c230b90b4692-624e-4ddd-af07-41f6
+    devid: f91bac6c-e946-4b9a-940d-377675204635
+    token: ENTER_YOUR_TOKEN_HERE
+
+# Finding API - https://www.x.com/developers/ebay/products/finding-api
+svcs.ebay.com:
+    appid: AlanSo-PriceSpy-PRD-ec230b90b-55dce9db
+    version: 1.0.0
+
+# Shopping API - https://www.x.com/developers/ebay/products/shopping-api
+open.api.ebay.com:
+    appid: AlanSo-PriceSpy-PRD-ec230b90b-55dce9db
+    version: 671
