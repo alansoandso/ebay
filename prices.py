@@ -13,18 +13,22 @@ class AsJson(dict):
         keys = path.split(".")
         val = None
 
-        for key in keys:
-            if val:
-                if isinstance(val, list):
-                    val = [v.get(key, default) if v else None for v in val]
+        try:
+            for key in keys:
+                if val:
+                    if isinstance(val, list):
+                        val = [v.get(key, default) if v else None for v in val]
+                    else:
+                        val = val.get(key, default)
                 else:
-                    val = val.get(key, default)
-            else:
-                val = dict.get(self, key, default)
+                    val = dict.get(self, key, default)
 
-            if not val:
-                break
-        return val
+                if not val:
+                    break
+            return val
+
+        except AttributeError:
+            return default
 
 
 def find(verb, api_request, product_id):
@@ -60,9 +64,10 @@ def find(verb, api_request, product_id):
         for item in items:
             ending_date = AsJson(item).get_string('listingInfo.endTime')[:10]
             day = datetime.datetime.strptime(ending_date, '%Y-%m-%d').strftime('%A')
-            amount = float(AsJson(item).get_string('sellingStatus.currentPrice.value'))
-            shipping = float(AsJson(item).get_string('shippingInfo.shippingServiceCost.value'))
-            item_id = AsJson(item).get_string('itemId')
+            amount = float(AsJson(item).get_string('sellingStatus.currentPrice.value', '999'))
+            shipping = float(AsJson(item).get_string('shippingInfo.shippingServiceCost.value', '0'))
+
+            item_id = AsJson(item).get_string('itemId', )
             url = AsJson(item).get_string('viewItemURL')
             total = '£{:03.2f} + £{:03.2f}'.format(amount, shipping)
             if AsJson(item).get_string('productId.value') == product_id:

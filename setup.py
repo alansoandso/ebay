@@ -5,7 +5,7 @@ install_requires = [
 ]
 
 setup(name='eprices',
-      version='1.0.3',
+      version='1.0.5',
       description='Display sold and available auctions',
       author='Alan So',
       author_email='alansoandso@gmail.com',
